@@ -1,0 +1,1 @@
+The exercises are in the exercises subdirectory. Enjoy!

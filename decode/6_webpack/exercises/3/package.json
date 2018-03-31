@@ -1,0 +1,14 @@
+{
+  "name": "3",
+  "version": "1.0.0",
+  "description": "I've included a app.js file and an index.html file\r Do not modify them!\r main.js imports two files: a.js and b.js  \r It is up to you to write those two imported files",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "p5": "^0.6.0"
+  }
+}

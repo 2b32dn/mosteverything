@@ -1,0 +1,29 @@
+<html>
+
+<body>
+    <div id='root'></div>
+    <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="output.js"></script>
+    <script>
+        function test() {
+            try {
+                var root = document.getElementById('root');
+                function assert(b) {
+                    if (b) return;
+                    throw new Error();
+                }
+                assert(root.children[0].children.length == 3)
+                assert(root.children[0].children[0].innerText.trim() === "cheese")
+                assert(root.children[0].children[1].innerText.trim() === 'bacon')
+                assert(root.children[0].children[2].innerText.trim() === 'milk')
+                root.innerText = "You finished the question!"
+            } catch (err) {
+                root.innerText = "There is a mistake somewhere"
+            }
+        }
+        setTimeout(test, 300);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,12 @@
+Rewrite this program so that it doesn't have a single function definition
+In other words, replace all the function definitions with anonymous functions
+
+function greet(x, y) {
+    console.log("hello " + x + " " + y);
+}
+
+function call(f) {
+    f("Bob", "Dole");
+}
+
+call(greet);

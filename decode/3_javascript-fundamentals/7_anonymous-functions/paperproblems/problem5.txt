@@ -1,0 +1,19 @@
+What is the output of this program? Don't cheat by running it!
+
+function askOnADate(n) {
+    if(n === "Bob") return "I do!";
+    else return "Absolutely not!";
+}
+
+function soften(f) {
+    return function(name) {
+        var r = f(name);
+        if(r !== "I do!") return "maybe";
+        else return r;
+    }
+    return ret;
+}
+
+var softAskOnADate = soften(askOnADate);
+console.log(softAskOnADate("Eric"));
+console.log(softAskOnADate("Bob"));

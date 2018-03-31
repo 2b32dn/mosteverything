@@ -1,0 +1,14 @@
+.title {
+    font-size: 20pt;
+    text-align: center;
+}
+.subtitle {
+    font-size: 15pt;
+    text-align: center;
+}
+.content {
+   font-family: comic-sans;
+}
+.emph {
+    font-style: italic;
+}

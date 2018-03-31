@@ -1,0 +1,11 @@
+{
+  "name": "4",
+  "version": "1.0.0",
+  "description": "In this exercise, you'll be running two express servers. Each one will be in its own tmux session.",
+  "main": "first-express-server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}

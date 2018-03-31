@@ -1,0 +1,26 @@
+<html>
+
+<body>
+    <div id='root'></div>
+    <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="output.js"></script>
+    <script>
+        function test() {
+            var root = document.getElementById('root');
+            try {
+                var s = root.children[0].innerText.trim();
+                if (s !== 'hello world') {
+                    root.innerText = "There is a mistake in your input.js file"
+                } else {
+                    root.innerText = "You finished the question!"
+                }
+            } catch (err) {
+                root.innerText = "There is a mistake somewhere"
+            }
+        }
+        setTimeout(test, 300);
+    </script>
+</body>
+
+</html>
