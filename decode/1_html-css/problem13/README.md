@@ -4,10 +4,10 @@ Create an HTML file and a CSS file that reproduces the following:
 
 It does not need to be pixel perfect
 
-##Submission
+## Submission
 It will automatically be submitted the next time you push.
 
-##Reference
+## Reference
 
 Your HTML should have the following structure:
 
