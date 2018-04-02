@@ -1,3 +1,3 @@
 # Description
 
-Modify the problem1.js and problem2.js files
+Supplied by teacher in different repository
