@@ -1,0 +1,1 @@
+My thought process was recorded in this video: https://youtu.be/RvwWLUP0fNA
