@@ -1,12 +1,14 @@
 .title {
-
+    font-size: 30px;
+    text-align: center;
 }
 .subtitle {
-
+    font-size: 20px;
+    text-align: center;
 }
 .content {
-
+    font-family: comic sans-serif;
 }
 .emph {
-
+    font-style: italic;
 }
