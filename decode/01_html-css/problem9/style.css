@@ -1,22 +1,22 @@
-#centered {
+.centered {
     text-align:center;
 }
-.title {
+#title {
     font-size: 30pt;
 }
-subtitle {
+#subtitle {
     font-size:15pt;
 }
-.div {
+div {
     background-color: gray;
 }
-#li {
+li {
     list-style-type: none;
 }
-content {
+#content {
     text-decoration: underline;
 
 }
-monospaced {
+.monospaced {
   font-family: monospace;
 }
