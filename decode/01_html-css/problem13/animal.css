@@ -1,7 +1,6 @@
 .container {
     display: flex;
 }
-
 .smol {
     height:100px;
 }
@@ -9,14 +8,9 @@
 .col {
     text-align: center;
     border-style: dashed;
-    height:auto;
-    width:auto;
     margin:20px;
     padding: 10px;
-}
-
-.heading {
-   
+    display: flex;
 }
 
 .section {

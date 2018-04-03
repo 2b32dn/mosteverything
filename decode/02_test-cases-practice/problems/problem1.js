@@ -19,18 +19,18 @@ let outputs = [
 
 // Make this function return the first letter of the string that is passed to it. If the string does not have a first letter, return undefined
 function f(str) {
-  for(var i = 0; i<=inputs.length;i++){
-    if(outputs[i] === undefined){
-      return undefined;
-    } else{
-      return inputs[i].charAt(0);
-    }
+  if(str === ""){
+    return undefined;
+  } else{
+    return str.charAt(0);
   }
 }
 
 function runTest(i) {
-    var expected = f(outputs[i]);
+    var expected = outputs[i];
+    console.log(expected);
     var actual = f(inputs[i]);
+    console.log(actual);
     assert.deepEqual(actual, expected);
 }
 

@@ -1,4 +1,5 @@
 .container {
+<<<<<<< HEAD
 
 }
 
@@ -8,4 +9,19 @@
 
 .col {
 
+=======
+    display: flex;
+}
+
+.smol {
+    height: 200px;
+}
+
+.col {
+    text-align: center;
+    border-style: dashed;
+    font-size: 2.1em;
+    margin: 50px;
+    padding: 20px;
+>>>>>>> 19d06bf8e9dc8f92dfd695ef4e37c3b18c06cec2
 }
