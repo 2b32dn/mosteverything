@@ -21,7 +21,7 @@ let outputs = [
 Make this function return the product of the two numbers that are passed to it. If one of the numbers is not passed, or if anything other than numbers are passed, return undefined.
 */
 function f(arr) {
-    return inputs[0][1] * inputs
+    return arr[0]*arr[1];
 }
 
 function runTest(i) {
