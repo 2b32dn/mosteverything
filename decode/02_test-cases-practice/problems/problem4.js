@@ -5,9 +5,11 @@ let inputs = [
   ["hello", 4],
   ["", 2],
   ["Hi", 0],
-  ["Dickson",1]
+  ["Dickson",1],
   ["Odin",2],
-  ["Thor", 3]
+  ["Thor", 3],
+  ["Loki",0],
+  ["Hilda",4]
 ]
 
 let outputs = [
@@ -17,7 +19,8 @@ let outputs = [
   "i",
   "i",
   "r",
-  
+  "L",
+  "a"
 ]
 
 /*
@@ -30,13 +33,17 @@ f(["abc", 0]); // a
 
 */
 function f(arr) {
-    
+  if( arr[0] === ""){
+    return undefined;
+  } else {
+    return arr[0].charAt(arr[1]);
+  }
 }
 
 function runTest(i) {
     var expected = outputs[i];
     var input = inputs[i];
-    var actual = f(input[0], input[1]);
+    var actual = f(input);
     assert.deepEqual(actual, expected);
 }
 
