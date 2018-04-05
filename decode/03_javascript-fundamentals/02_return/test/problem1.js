@@ -1,6 +1,6 @@
 var expect = require('chai').expect;
 
-var f = require('../../src/return/problem1.js');
+var f = require('../src/problem1.js');
 
 var fs = require('fs')
 var source = fs.readFileSync(__dirname + '/../src/problem1.js').toString();

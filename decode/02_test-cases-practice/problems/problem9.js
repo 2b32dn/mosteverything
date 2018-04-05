@@ -10,7 +10,7 @@ let inputs = [
 ]
 
 let outputs = [
-  "good",
+  "thank",
   "cake",
   "Squeezy",
   "foxtrot",
@@ -22,9 +22,14 @@ Make this function return the longest word in the input string. If the input str
 If multiple words have the same length, return the last one that matches.
 */
 function f(str) {
-    var newSentence = str.split(" ");
-
-    console.log(newSentence);
+  var arr = str.split(" ");
+  var longest = "";
+  for ( var i = 0; i<= arr.length; i++){
+    if(longest.length < arr[i].length){
+      longest = arr[i];
+    }
+  }
+  return longest;
 }
 
 function runTest(i) {

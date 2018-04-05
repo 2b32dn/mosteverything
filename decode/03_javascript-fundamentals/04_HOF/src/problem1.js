@@ -1,5 +1,24 @@
 
+// 1.
 function callNoException(f, arg) {
+    try{
+    	f(arg);
+    }
+      catch(err){
+      	return null;
+      } 
+      return arg;
+}
+
+function throwsZero(x){
+    if(x==0) throw new Error("woops");
+    return x;
+  }
+
+callNoException(throwsZero, 0)
+callNoException(throwsZero, 12)
+
+
     // if f(arg) throws an exception, return null
     // otherwise return what f(arg) returned
     // Example:
@@ -9,9 +28,25 @@ function callNoException(f, arg) {
     //  }
     //  callNoException(throwsZero, 0) returns null
     //  callNoException(throwsZero, 12) returns 12
-}
 
+// 2.
 function callNoNull(f, arg) {
+    try{
+        f(arg);
+    } catch(err){
+        if(f(arg)== null){
+            throw "Error!";
+        };
+    }
+    return arg;
+}
+function nullZero(x) {
+    if(x==0) return null;
+    return x;
+}
+callNoNull(nullZero, 0);
+callNoNull(nullZero, 12);
+
     // if f(arg) returns null, throw an exception
     // otherwise return what f(arg) returned  
     // Example: 
@@ -22,10 +57,17 @@ function callNoNull(f, arg) {
     // callNoNull(nullZero, 0) throws an exception
     // callNoNull(nullZero, 12) returns 12
     
+
+// 3.
+function exceptionalize(f) {
     
 }
-
-function exceptionalize(f) {
+function nullZero(x) {
+    if(x==0) return null;
+    return x;
+}
+g(0)
+g(12)
     // returns a new function
     // this function takes 1 input, called arg
     // if f(arg) is null, this new function throws an exception
@@ -40,8 +82,7 @@ function exceptionalize(f) {
     // g(0) throws an exception
     // g(12) returns 12
 
-}
-
+// 4. 
 function nullify(f) {
     // returns a new function
     // this function takes 1 input, called arg
