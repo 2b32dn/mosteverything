@@ -1,0 +1,18 @@
+<html>
+  <body>
+      <div id="papa">
+	  <div id="child">child</div>
+       </div>
+  </body>
+  <script>
+    var papa = document.querySelector('#papa');
+    var child = document.querySelector('#child');
+    papa.addEventListener('click', function() {
+        console.log('papa was clicked!');
+    });
+    child.addEventListener('click', function() {
+        console.log('child was clicked!');
+    });
+
+  </script>
+</html>
