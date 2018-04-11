@@ -15,20 +15,12 @@ function randBtn(){
     div.appendChild(button);
 
     // Press the button to win.
-    button.addEventListener('click',
-    function click2win(){ 
-        if(!win){
-            alert("You pressed the button and you won!");
-            win = true;
-        } 
-        else {
-            setTimeout( function killSwitch(){
-                win = true; 
-                button.preventDefault()},
-                1500
-            );
-        }
-    });    
+setTimeout( 
+    function(){
+        button.addEventListener('click',function click2win(){
+            if(!win){alert("You pressed the button and you won!");win = true;}
+        });
+    }, 1500);
 }
 
 // Death trap.
