@@ -12,3 +12,7 @@ function call(f) {
 }
 
 call(greet);
+
+// 
+(function greet(x){console.log("Hello " + x)})("bob");
+

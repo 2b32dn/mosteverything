@@ -10,13 +10,13 @@ class Shape {
     }
 }
 
-class Square {
+class Square extends Shape {
     constructor(size) {
-        supr("square");
+        super("square");
         this.size = size;
     }
     area() {
-        return this.size * this.siz;
+        return this.size * this.size;
     }
     perimeter() {
        return this.size * 4;

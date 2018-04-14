@@ -5,15 +5,19 @@ function askOnADate(n) {
     else return "Absolutely not!";
 }
 
-function soften(f) {
+function soften(askOnADate) {
     return function(name) {
-        var r = f(name);
+        var r = askOnADate(name);
         if(r !== "I do!") return "maybe";
         else return r;
     }
-    return ret;
 }
 
 var softAskOnADate = soften(askOnADate);
+softAskOnADate = function(name) {
+        var r = askOnADate(name);
+        if(r !== "I do!") return "maybe";
+        else return r;
+    }
 console.log(softAskOnADate("Eric"));
 console.log(softAskOnADate("Bob"));

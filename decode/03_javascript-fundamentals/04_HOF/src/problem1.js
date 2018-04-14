@@ -31,12 +31,12 @@ callNoException(throwsZero, 12)
 
 // 2.
 function callNoNull(f, arg) {
-    try{
+    if(f(arg) == null){
+		throw new Error("Error");
+	} try{
         f(arg);
     } catch(err){
-        if(f(arg)== null){
-            throw "Error!";
-        };
+        throw new Error("Error");
     }
     return arg;
 }
@@ -60,7 +60,10 @@ callNoNull(nullZero, 12);
 
 // 3.
 function exceptionalize(f) {
-    
+    if(f(arg) == null){
+        throw new Error("Error");
+    }
+    return x;
 }
 function nullZero(x) {
     if(x==0) return null;
@@ -83,7 +86,21 @@ g(12)
     // g(12) returns 12
 
 // 4. 
-function nullify(f) {
+function nullify(f){
+	function g(arg){
+		try{
+			return f(arg)
+		}catch(err){
+			return null;
+		}
+	}
+	return g;
+}
+
+function throwsOne(x){
+	if(x == 1) throw new Error("woops");
+	return x;
+}
     // returns a new function
     // this function takes 1 input, called arg
     // if f(arg) throws an exception, this new function returns null
@@ -97,9 +114,22 @@ function nullify(f) {
     //  g(0) returns null
     //  g(12) throws an exception
     
+// 5. 
+function map(lst,f){
+	var ret = [];
+	for(var i = 0;i<lst.length; i++){
+		ret[i]= f(lst[i]);
+	}
+	return ret;
 }
 
-function map(lst, f) {
+function subtract(x){
+	return x-1
+}
+
+var x = subtract()
+console.log(map([2,3,4],x))
+
     // lst is an array and f is a function
     // map returns an array with the same number of elements as lst
     // if lst = [a1, a2, a3, a4, a5] then map(lst, f) returns [f(a1), f(a2), f(a3), f(a4), f(a5)]
@@ -110,11 +140,12 @@ function map(lst, f) {
     //
     // function toUpperCase(str) { return str.toUpperCase(); }
     // map(["bob", "susie"], toUpperCase) returns ["BOB", "SUSIE"]
-}
 
+
+// 6.
 function filter(lst, f) {
     // lst is an array and f is a function
-    // f takes one argument and returns a boolean (true or false)
+    // f takes one argument and returns an array
     // filter(lst, f) returns a list with all the elements of lst that does not satisfy f removed
     // filter(lst, f) has fewer elements than lst
     // if lst_ = filter(lst, f) and x is an element of lst_ it means that:
@@ -126,6 +157,7 @@ function filter(lst, f) {
     // filter([1, 2, 3, 4, 5], isEven) returns [2,4];   
 }
 
+// 7.
 function every(lst, f) {
     // lst is an array and f is a function
     // f takes 1 arguments and returns a boolean

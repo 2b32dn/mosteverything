@@ -10,3 +10,7 @@ function call(f) {
 }
 
 call(greet);
+
+//
+
+(function greet(x, y){console.log("hello "+ x + " "+ y)})("bob", "dole");

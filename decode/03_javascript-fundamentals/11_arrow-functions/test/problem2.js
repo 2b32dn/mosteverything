@@ -3,7 +3,7 @@ var expect = require('chai').expect;
 var arrowfuncs = require('../src/problem2.js');
 
 var fs = require('fs')
-var source = fs.readFileSync(__dirname + '/../../src/arrow-functions/problem2.js').toString();
+var source = fs.readFileSync(__dirname + '/../src/problem2.js').toString();
 
 describe('arrow functions', function() {
     it('The file should contain no arrows', function() {

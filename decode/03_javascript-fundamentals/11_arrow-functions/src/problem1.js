@@ -6,7 +6,7 @@ function c(g, h) {
 }
 
 function t() {
-    return c( x => return y + 2, (x,y) => return x + y);
+    return c( x => {return y + 2}, (x,y) => {return x + y});
 }
 
 module.exports = t

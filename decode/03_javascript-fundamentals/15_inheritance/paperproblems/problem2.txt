@@ -11,3 +11,21 @@ class Shape {
           this.area() + " and perimeter " + this.perimeter();
     }
 }
+
+class Rectangle extends Shape {
+    constructor(num){
+        super("square");
+        this.num = num;
+    }
+
+    area(){
+        return this.num * this.num;
+    }
+
+    perimeter(){
+        return this.num * 4;
+    }
+}
+
+var polygon = new Rectangle(2);
+polygon.toString();

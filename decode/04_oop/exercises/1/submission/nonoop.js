@@ -133,15 +133,3 @@ bob.FeedTheCat(mittens);
 //         console.log(person.name + " only has purina. Sorry " + cat.name + "!")
 //     }
 // }
-
-// var fido = makeDog("fido", "iams", "labrador", 4);
-// var mittens = makeCat("mittens", "purina", 3);
-// var bob = makePerson("bob", 2, 1);
-// catAnimalSound(mittens);
-// dogAnimalSound(fido);
-
-// feedCat(bob, mittens);
-// feedDog(bob, fido);
-// feedCat(bob, mittens);
-// feedDog(bob, fido);
-// feedCat(bob, mittens);

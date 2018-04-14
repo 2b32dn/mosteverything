@@ -1,17 +1,19 @@
-// This sectin contains some game constants. It is not super interesting
-var GAME_WIDTH = 375;
-var GAME_HEIGHT = 500;
+// This section contains some game constants. It is not super interesting
+var GAME_WIDTH = 1024;
+var GAME_HEIGHT = 600;
 
 var ENEMY_WIDTH = 75;
 var ENEMY_HEIGHT = 156;
-var MAX_ENEMIES = 3;
+var MAX_ENEMIES = 8;
 
 var PLAYER_WIDTH = 75;
 var PLAYER_HEIGHT = 54;
 
+var PLAYER_STATUS = true;
+
 // These two constants keep us from using "magic numbers" in our code
-var LEFT_ARROW_CODE = 37;
-var RIGHT_ARROW_CODE = 39;
+const LEFT_ARROW_CODE = 37;
+const RIGHT_ARROW_CODE = 39;
 
 // These two constants allow us to DRY
 var MOVE_LEFT = 'left';
@@ -19,14 +21,11 @@ var MOVE_RIGHT = 'right';
 
 // Preload game images
 var images = {};
-['enemy.png', 'stars.png', 'player.png'].forEach(imgName => {
+['enemy.png', 'sc.png', 'player.png'].forEach(imgName => {
     var img = document.createElement('img');
     img.src = 'images/' + imgName;
     images[imgName] = img;
 });
-
-
-
 
 
 // This section is where you will be doing most of your coding
@@ -37,13 +36,11 @@ class Enemy {
         this.sprite = images['enemy.png'];
 
         // Each enemy should have a different speed
-        this.speed = Math.random() / 2 + 0.25;
+        this.speed = Math.random() / 2 + 0.45;
     }
-
     update(timeDiff) {
         this.y = this.y + timeDiff * this.speed;
     }
-
     render(ctx) {
         ctx.drawImage(this.sprite, this.x, this.y);
     }
@@ -55,7 +52,6 @@ class Player {
         this.y = GAME_HEIGHT - PLAYER_HEIGHT - 10;
         this.sprite = images['player.png'];
     }
-
     // This method is called by the game engine when left/right arrows are pressed
     move(direction) {
         if (direction === MOVE_LEFT && this.x > 0) {
@@ -65,13 +61,10 @@ class Player {
             this.x = this.x + PLAYER_WIDTH;
         }
     }
-
     render(ctx) {
         ctx.drawImage(this.sprite, this.x, this.y);
     }
 }
-
-
 
 
 
@@ -108,7 +101,6 @@ class Engine {
         if (!this.enemies) {
             this.enemies = [];
         }
-
         while (this.enemies.filter(e => !!e).length < MAX_ENEMIES) {
             this.addEnemy();
         }
@@ -116,15 +108,14 @@ class Engine {
 
     // This method finds a random spot where there is no enemy, and puts one in there
     addEnemy() {
-        var enemySpots = GAME_WIDTH / ENEMY_WIDTH;
-
+        var enemySpots = (GAME_WIDTH / ENEMY_WIDTH)+1; // +1 Added to fix the bug.
         var enemySpot;
+
         // Keep looping until we find a free enemy spot at random
-        while (!enemySpot || this.enemies[enemySpot]) {
+        while (enemySpot === undefined || this.enemies[enemySpot]) {
             enemySpot = Math.floor(Math.random() * enemySpots);
         }
-
-        this.enemies[enemySpot] = new Enemy(enemySpot * ENEMY_WIDTH);
+        this.enemies[enemySpot] = new Enemy((enemySpot-1) * ENEMY_WIDTH); // -1 Added to fix the bug.
     }
 
     // This method kicks off the game
@@ -167,7 +158,7 @@ class Engine {
         this.enemies.forEach(enemy => enemy.update(timeDiff));
 
         // Draw everything!
-        this.ctx.drawImage(images['stars.png'], 0, 0); // draw the star bg
+        this.ctx.drawImage(images['sc.png'], 0, 0); // draw the star bg
         this.enemies.forEach(enemy => enemy.render(this.ctx)); // draw the enemies
         this.player.render(this.ctx); // draw the player
 
@@ -180,17 +171,17 @@ class Engine {
         this.setupEnemies();
 
         // Check if player is dead
-        if (this.isPlayerDead()) {
+        if (this.isPlayerDead() === true) {
             // If they are dead, then it's game over!
-            this.ctx.font = 'bold 30px Impact';
+            this.ctx.font = '30px Comic Sans-sheriff';
             this.ctx.fillStyle = '#ffffff';
-            this.ctx.fillText(this.score + ' GAME OVER', 5, 30);
+            this.ctx.fillText(this.score + ' Score points', 10, 30);
         }
         else {
             // If player is not dead, then draw the score
-            this.ctx.font = 'bold 30px Impact';
+            this.ctx.font = '30px Comic Sans-sheriff';
             this.ctx.fillStyle = '#ffffff';
-            this.ctx.fillText(this.score, 5, 30);
+            this.ctx.fillText(this.score, 10, 30);
 
             // Set the time marker and redraw
             this.lastFrame = Date.now();
@@ -198,9 +189,14 @@ class Engine {
         }
     }
 
-    isPlayerDead() {
+    isPlayerDead(){
         // TODO: fix this function!
-        return false;
+        return(this.enemies.some((element,index)=>{
+            return (this.player.x === element.x &&
+                this.player.y + 150 > element.y  &&
+                this.player.y - 150 < element.y )
+            })
+        )   
     }
 }
 

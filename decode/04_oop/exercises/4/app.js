@@ -36,3 +36,5 @@ populate(document.getElementById('root'),
         new li("I love cheese"),
         new li("I love bacon"),
         new li("I love croissants")]))
+
+// classes are missing.
