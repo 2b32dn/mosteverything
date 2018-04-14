@@ -4,10 +4,10 @@ var GAME_HEIGHT = 600;
 
 var ENEMY_WIDTH = 75;
 var ENEMY_HEIGHT = 156;
-var MAX_ENEMIES = 8;
+var MAX_ENEMIES = 5;
 
-var PLAYER_WIDTH = 75;
-var PLAYER_HEIGHT = 54;
+var PLAYER_WIDTH = 88;
+var PLAYER_HEIGHT = 90;
 
 var PLAYER_STATUS = true;
 
@@ -21,7 +21,7 @@ var MOVE_RIGHT = 'right';
 
 // Preload game images
 var images = {};
-['enemy.png', 'sc.png', 'player.png'].forEach(imgName => {
+['pheonix.png', 'sc.png', 'marine.png'].forEach(imgName => {
     var img = document.createElement('img');
     img.src = 'images/' + imgName;
     images[imgName] = img;
@@ -33,7 +33,7 @@ class Enemy {
     constructor(xPos) {
         this.x = xPos;
         this.y = -ENEMY_HEIGHT;
-        this.sprite = images['enemy.png'];
+        this.sprite = images['pheonix.png'];
 
         // Each enemy should have a different speed
         this.speed = Math.random() / 2 + 0.45;
@@ -50,7 +50,7 @@ class Player {
     constructor() {
         this.x = 2 * PLAYER_WIDTH;
         this.y = GAME_HEIGHT - PLAYER_HEIGHT - 10;
-        this.sprite = images['player.png'];
+        this.sprite = images['marine.png'];
     }
     // This method is called by the game engine when left/right arrows are pressed
     move(direction) {
@@ -83,6 +83,9 @@ class Engine {
 
         // Setup the <canvas> element where we will be drawing
         var canvas = document.createElement('canvas');
+        var canvasId = document.createAttribute('id')
+        canvasId.value = 'canvasid';
+        canvas.setAttributeNode(canvasId);
         canvas.width = GAME_WIDTH;
         canvas.height = GAME_HEIGHT;
         element.appendChild(canvas);
@@ -108,14 +111,14 @@ class Engine {
 
     // This method finds a random spot where there is no enemy, and puts one in there
     addEnemy() {
-        var enemySpots = (GAME_WIDTH / ENEMY_WIDTH)+1; // +1 Added to fix the bug.
+        var enemySpots = GAME_WIDTH / ENEMY_WIDTH; // +1 Added to fix the bug.
         var enemySpot;
 
         // Keep looping until we find a free enemy spot at random
         while (enemySpot === undefined || this.enemies[enemySpot]) {
             enemySpot = Math.floor(Math.random() * enemySpots);
         }
-        this.enemies[enemySpot] = new Enemy((enemySpot-1) * ENEMY_WIDTH); // -1 Added to fix the bug.
+        this.enemies[enemySpot] = new Enemy((enemySpot) * ENEMY_WIDTH); // -1 Added to fix the bug.
     }
 
     // This method kicks off the game
@@ -175,7 +178,7 @@ class Engine {
             // If they are dead, then it's game over!
             this.ctx.font = '30px Comic Sans-sheriff';
             this.ctx.fillStyle = '#ffffff';
-            this.ctx.fillText(this.score + ' Score points', 10, 30);
+            this.ctx.fillText(this.score + ' Score Points', 10, 30);
         }
         else {
             // If player is not dead, then draw the score
@@ -191,10 +194,12 @@ class Engine {
 
     isPlayerDead(){
         // TODO: fix this function!
+        console.log(this.enemies);
+        console.log(this.player);
         return(this.enemies.some((element,index)=>{
             return (this.player.x === element.x &&
-                this.player.y + 150 > element.y  &&
-                this.player.y - 150 < element.y )
+                this.player.y + 450 > element.y  &&
+                this.player.y - 450 < element.y )
             })
         )   
     }

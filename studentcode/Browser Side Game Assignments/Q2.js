@@ -1,4 +1,5 @@
 var win = false;
+var space_bar_code = 32;
 
 var clickWin = document.querySelector("#body");
 clickWin.addEventListener('click',
@@ -10,8 +11,8 @@ function(){
 var clickSpacebar = document.querySelector("#body");
 clickWin.addEventListener('keydown',
 function(e){ 
-    if (e.keycode !== 32) 
-    return alert("You pressed on \"spacebar and you won!");
+    if (e.keycode === space_bar_code) 
+    alert("You pressed on \"spacebar and you won!");
     win = true;
 });
 
