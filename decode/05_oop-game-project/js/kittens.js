@@ -1,15 +1,13 @@
 // This section contains some game constants. It is not super interesting
-var GAME_WIDTH = 1024;
-var GAME_HEIGHT = 600;
+var GAME_WIDTH = 966;
+var GAME_HEIGHT = 500;
 
-var ENEMY_WIDTH = 75;
-var ENEMY_HEIGHT = 156;
+var ENEMY_WIDTH = 138;
+var ENEMY_HEIGHT = 95;
 var MAX_ENEMIES = 5;
 
-var PLAYER_WIDTH = 88;
-var PLAYER_HEIGHT = 90;
-
-var PLAYER_STATUS = true;
+var PLAYER_WIDTH = 138;
+var PLAYER_HEIGHT = 75;
 
 // These two constants keep us from using "magic numbers" in our code
 const LEFT_ARROW_CODE = 37;
@@ -36,7 +34,7 @@ class Enemy {
         this.sprite = images['pheonix.png'];
 
         // Each enemy should have a different speed
-        this.speed = Math.random() / 2 + 0.45;
+        this.speed = Math.random() / 2 + 0.30;
     }
     update(timeDiff) {
         this.y = this.y + timeDiff * this.speed;
@@ -45,6 +43,7 @@ class Enemy {
         ctx.drawImage(this.sprite, this.x, this.y);
     }
 }
+
 
 class Player {
     constructor() {
@@ -62,11 +61,9 @@ class Player {
         }
     }
     render(ctx) {
-        ctx.drawImage(this.sprite, this.x, this.y);
+        ctx.drawImage(this.sprite, this.x+23, this.y);
     }
 }
-
-
 
 /*
 This section is a tiny game engine.
@@ -90,6 +87,9 @@ class Engine {
         canvas.height = GAME_HEIGHT;
         element.appendChild(canvas);
 
+        this.timeCounter = 0
+        this.soundOn = false
+
         this.ctx = canvas.getContext('2d');
 
         // Since gameLoop will be called out of context, bind it once here.
@@ -111,14 +111,14 @@ class Engine {
 
     // This method finds a random spot where there is no enemy, and puts one in there
     addEnemy() {
-        var enemySpots = GAME_WIDTH / ENEMY_WIDTH; // +1 Added to fix the bug.
+        var enemySpots = Math.floor(GAME_WIDTH / ENEMY_WIDTH); 
         var enemySpot;
 
         // Keep looping until we find a free enemy spot at random
         while (enemySpot === undefined || this.enemies[enemySpot]) {
             enemySpot = Math.floor(Math.random() * enemySpots);
         }
-        this.enemies[enemySpot] = new Enemy((enemySpot) * ENEMY_WIDTH); // -1 Added to fix the bug.
+        this.enemies[enemySpot] = new Enemy((enemySpot) * ENEMY_WIDTH); 
     }
 
     // This method kicks off the game
@@ -130,12 +130,129 @@ class Engine {
         document.addEventListener('keydown', e => {
             if (e.keyCode === LEFT_ARROW_CODE) {
                 this.player.move(MOVE_LEFT);
+                var x = Math.floor(Math.random()*8);
+                switch(x){
+                    case 0:
+                        var letsmove = new Audio('letsmove.mp3');
+                        if(this.timeCounter > 75){
+                            letsmove.play();
+                            this.timeCounter = 0
+                        }
+                        break;
+                    case 1:
+                        var areyougonnagivemeorders = new Audio('areyougonnagivemeorders.mp3');
+                        if(this.timeCounter > 75){
+                            areyougonnagivemeorders.play();
+                            this.timeCounter = 0
+                        }
+                        break;
+                    case 2:
+                        var rocknroll = new Audio('rocknroll.mp3');
+                        if(this.timeCounter > 75){
+                            rocknroll.play();
+                            this.timeCounter = 0
+                        }
+                        break;
+                    case 3:
+                        var jackedupandgoodtogo = new Audio('jackedupandgoodtogo.mp3');
+                        if(this.timeCounter > 75){
+                            jackedupandgoodtogo.play();
+                            this.timeCounter = 0
+                        }
+                        break;
+                    case 4:
+                        var omgheiswhacked = new Audio('omgheiswhacked.mp3');
+                        if(this.timeCounter > 75){
+                            omgheiswhacked.play();
+                            this.timeCounter = 0
+                        }
+                        break;
+                    case 5:
+                        var wegottomove = new Audio('wegottomove.mp3');
+                        if(this.timeCounter > 75){
+                            wegottomove.play();
+                            this.timeCounter = 0
+                        }
+                        break;
+                    case 6:
+                        var gogogo = new Audio('gogogo.mp3');
+                        if(this.timeCounter > 75){
+                            gogogo.play();
+                            this.timeCounter = 0
+                        }
+                        break;
+                    case 7:
+                        var youwantapieceofmeboy = new Audio('youwantapieceofmeboy.mp3');
+                        if(this.timeCounter > 75){
+                            youwantapieceofmeboy.play();
+                            this.timeCounter = 0
+                        }
+                        break;
+                }
             }
             else if (e.keyCode === RIGHT_ARROW_CODE) {
                 this.player.move(MOVE_RIGHT);
+                var x = Math.floor(Math.random()*8);
+                switch(x){
+                    case 0:
+                        var letsmove = new Audio('letsmove.mp3');
+                        if(this.timeCounter > 75){
+                            letsmove.play();
+                            this.timeCounter = 0
+                        }
+                        break;
+                    case 1:
+                        var areyougonnagivemeorders = new Audio('areyougonnagivemeorders.mp3');
+                        if(this.timeCounter > 75){
+                            areyougonnagivemeorders.play();
+                            this.timeCounter = 0
+                        }
+                        break;
+                    case 2:
+                        var rocknroll = new Audio('rocknroll.mp3');
+                        if(this.timeCounter > 75){
+                            rocknroll.play();
+                            this.timeCounter = 0
+                        }
+                        break;
+                    case 3:
+                        var jackedupandgoodtogo = new Audio('jackedupandgoodtogo.mp3');
+                        if(this.timeCounter > 75){
+                            jackedupandgoodtogo.play();
+                            this.timeCounter = 0
+                        }
+                        break;
+                    case 4:
+                        var omgheiswhacked = new Audio('omgheiswhacked.mp3');
+                        if(this.timeCounter > 75){
+                            omgheiswhacked.play();
+                            this.timeCounter = 0
+                        }
+                        break;
+                    case 5:
+                        var wegottomove = new Audio('wegottomove.mp3');
+                        if(this.timeCounter > 75){
+                            wegottomove.play();
+                            this.timeCounter = 0
+                        }
+                        break;
+                    case 6:
+                        var gogogo = new Audio('gogogo.mp3');
+                        if(this.timeCounter > 75){
+                            gogogo.play();
+                            this.timeCounter = 0
+                        }
+                        break;
+                    case 7:
+                        var youwantapieceofmeboy = new Audio('youwantapieceofmeboy.mp3');
+                        if(this.timeCounter > 75){
+                            youwantapieceofmeboy.play();
+                            this.timeCounter = 0
+                        }
+                        break;
+                }
             }
         });
-
         this.gameLoop();
     }
 
@@ -150,6 +267,7 @@ class Engine {
     You should use this parameter to scale your update appropriately
      */
     gameLoop() {
+        this.timeCounter++
         // Check how long it's been since last frame
         var currentFrame = Date.now();
         var timeDiff = currentFrame - this.lastFrame;
@@ -175,16 +293,24 @@ class Engine {
 
         // Check if player is dead
         if (this.isPlayerDead() === true) {
+            
+            //. Play death sound.
+            var death1 = new Audio('death1.mp3');
+            death1.play();
+
             // If they are dead, then it's game over!
-            this.ctx.font = '30px Comic Sans-sheriff';
-            this.ctx.fillStyle = '#ffffff';
-            this.ctx.fillText(this.score + ' Score Points', 10, 30);
+            this.ctx.font = '30px Times New Roman';
+            this.ctx.fillStyle = '#F1C40F';
+            this.ctx.fillText(this.score + ' Score Points. Protoss Win.', 10, 50);
+
+
+
         }
         else {
             // If player is not dead, then draw the score
-            this.ctx.font = '30px Comic Sans-sheriff';
-            this.ctx.fillStyle = '#ffffff';
-            this.ctx.fillText(this.score, 10, 30);
+            this.ctx.font = '30px Times New Roman';
+            this.ctx.fillStyle = '#F1C40F';
+            this.ctx.fillText(this.score, 10, 50);
 
             // Set the time marker and redraw
             this.lastFrame = Date.now();
@@ -198,8 +324,8 @@ class Engine {
         console.log(this.player);
         return(this.enemies.some((element,index)=>{
             return (this.player.x === element.x &&
-                this.player.y + 450 > element.y  &&
-                this.player.y - 450 < element.y )
+                this.player.y + 73 > element.y  &&
+                this.player.y - 73 < element.y )
             })
         )   
     }
