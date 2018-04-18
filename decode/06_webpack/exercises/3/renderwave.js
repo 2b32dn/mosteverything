@@ -1,4 +1,3 @@
-
 function renderWave(p5, yvalues, xspacing) {
     p5.noStroke();
     p5.fill(255);
@@ -8,3 +7,4 @@ function renderWave(p5, yvalues, xspacing) {
     }
 
 }
+export default renderWave;

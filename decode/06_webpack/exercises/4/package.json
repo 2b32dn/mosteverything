@@ -1,0 +1,14 @@
+{
+  "name": "4",
+  "version": "1.0.0",
+  "description": "Create a webpage. The webpage displays a new random joke every time.",
+  "main": "webpack.config.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "one-liner-joke": "^1.0.0"
+  }
+}
