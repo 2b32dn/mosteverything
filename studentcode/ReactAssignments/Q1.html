@@ -1,0 +1,26 @@
+<html>
+    <head>
+    <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    </head>
+    <body>
+        <div>
+            <div id="momma"></div>
+        </div>
+        <div>
+            <div id="poppa"></div>
+        </div>
+        <script>
+            var linkMomma = document.getElementById('momma');
+
+            var thePic = React.createElement("div", null, 
+                React.createElement("img",{ src: "selfie.JPG", width: "50%"}));
+            ReactDOM.render(thePic, linkMomma);
+            
+            var linkPoppa = document.getElementById('poppa');
+            var theLink = React.createElement("div", null,
+                React.createElement("a",{ href: "https://www.instagram.com/2b32dn/"}," Click here"));
+            ReactDOM.render(theLink, linkPoppa);
+        </script>
+    </body>
+</html>
