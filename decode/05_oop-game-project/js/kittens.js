@@ -70,6 +70,9 @@ This section is a tiny game engine.
 This engine will use your Enemy and Player classes to create the behavior of the game.
 The engine will try to draw your game at 60 frames per second using the requestAnimationFrame function
 */
+var eng = new Engine ()
+
+
 class Engine {
     constructor(element) {
         // Setup the player
@@ -315,6 +318,7 @@ class Engine {
             // Set the time marker and redraw
             this.lastFrame = Date.now();
             requestAnimationFrame(this.gameLoop);
+            // gameloop()
         }
     }
 
