@@ -36,6 +36,4 @@ class App extends React.Component {
   }
 }
 
-// <button onClick={()=>this.btn1}>Click Button 1 to disappear</button>
-// <button onClick={()=>this.btn2}>Click Button 2 to disappear</button>
 export default App;
